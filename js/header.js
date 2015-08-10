@@ -34,7 +34,9 @@ $(document).ready(function(){
         console.log(data);
     });
 
+/*    $("#profile").click(function(){
 
+    });*/
 
     /*scope.manbus=function(){
         $location.path('/manage')
