@@ -18,12 +18,16 @@ window.onload=function(){
         factory:document.getElementById("factory").firstElementChild,
         adddate:document.getElementById("adddate").lastElementChild,
         addtimeUl:document.getElementById("addtime").lastElementChild,
-        parkOl:document.getElementById("park").lastElementChild,
+        parkOl:document.getElementById("park").lastElementChild.previousElementSibling,
+        parkUl:document.getElementById("park").lastElementChild,
+
         parkListul:document.getElementById("parkListul"),
         upname:document.getElementById("name").lastElementChild,
         upadddateval:document.getElementById("adddateval"),
         upaddtimeval:document.getElementById("addtimeval"),
+
         upparkval:document.getElementById("parkval"),
+
         whichDay:new Date(),
         randomcolor:function(){
             var arr=['#843534','#66512c','#FF8F00','#c1e2b3'];
@@ -31,37 +35,20 @@ window.onload=function(){
         },
         makeday:function(num){
             var datefra=document.createDocumentFragment();
-            /*var year=gl.whichDay.getFullYear();
+            var year=gl.whichDay.getFullYear();
             var month=gl.whichDay.getMonth()+1;
             var day=Number(gl.whichDay.getDate());
-            //alert(year+"-"+month+"-"+day);*/
+            //alert(year+"-"+month+"-"+day);
 
-
-
-            //var datecur=year+"-"+month+"-"+(day);
-            //gl.upadddateval.innerHTML=datecur;
-            var j=0;
+            var datecur=year+"-"+month+"-"+(day);
+            gl.upadddateval.innerHTML=datecur;
             for(;num<=6;num++){
-                /*Date curDate = new Date();
-                 var preDate = new Date(curDate.getTime() - 24*60*60*1000);  //前一天
-                 var nextDate = new Date(curDate.getTime() + 24*60*60*1000);  //后一天*/
-
-                (function(j){
-                    var sec=86400*1000;
-                    //alert(num);
-                    var colorSE=Math.floor(Math.random()*4);
-                    var li=document.createElement("li");
-                    var time=new Date(gl.whichDay.getTime()+(j*sec));
-
-                    console.log(new Date(parseInt(gl.whichDay.getTime())+(j*sec)));
-
-                    var txt=document.createTextNode(time.getFullYear()+"-"+(time.getMonth()+1)+"-"+time.getDate());
-                    /*var txt=document.createTextNode(year+"-"+month+"-"+(day++));*/
-                    li.appendChild(txt);
-                    li.style.backgroundColor=gl.randomcolor()[colorSE];
-                    datefra.appendChild(li);
-                })(j);
-                j++;
+                var colorSE=Math.floor(Math.random()*4);
+                var li=document.createElement("li");
+                var txt=document.createTextNode(year+"-"+month+"-"+(day++));
+                li.appendChild(txt);
+                li.style.backgroundColor=gl.randomcolor()[colorSE];
+                datefra.appendChild(li);
             }
             gl.adddate.appendChild(datefra);
         },
@@ -118,6 +105,7 @@ window.onload=function(){
 
             /* 添加班车下车地点 */
             var spot=data['addBS'];
+            var spotweek=data['addBS_weekend'];
             var parkListulfrag=document.createDocumentFragment();
             spot.forEach(function(item,index){
                 //console.log(item['FName']);
@@ -127,6 +115,18 @@ window.onload=function(){
                 parkListulfrag.appendChild(li);
             });
             gl.parkListul.appendChild(parkListulfrag);
+
+            var parkListulfragweek=document.createDocumentFragment();
+            spotweek.forEach(function(item,index){
+                //console.log(item['FName']);
+                var li=document.createElement("li");
+                var txt=document.createTextNode(item['FName']);
+                li.appendChild(txt);
+                parkListulfragweek.appendChild(li);
+            });
+            gl.parkUl.appendChild(parkListulfragweek);
+
+
 
             /* 设置用户常用下车地点*/
             //alert(spot[0]['FName']);
@@ -160,21 +160,6 @@ window.onload=function(){
             }())
         }
     });
-
-    /*取周六的下车地点*/
-    function sat(){
-        $.ajax({
-            url:'',
-            Type:'POST',
-            dataType:'json',
-            success:function(data){
-                alert(data)
-            },
-            error:function(data){
-                console.log(data);
-            }
-        })
-    }
 
     if(localStorage.getItem('usuallytime')){
         gl.upaddtimeval.innerText=localStorage.getItem('usuallytime');
@@ -210,7 +195,7 @@ window.onload=function(){
         gl.manamespan.style.left="0px";
     },false);
 
-    gl.manameinput.addEventListener('blur',function(){
+    /*gl.manameinput.addEventListener('blur',function(){
         //console.log(gl.manameinput.value);
         if(gl.manameinput.value==''){
             gl.manamespan.style.top="0";
@@ -228,14 +213,17 @@ window.onload=function(){
                 dataType:'json',
                 Type:'POST',
                 data:{
-                    "firstname":data
+                    //"firstname":data
                 },
                 beforeSend:function(){
                     //
                 },
                 success:function(data){
-                    if(data!=''){
+                    *//*if(data!=''){
+
                         console.log(data);
+
+                        console.log("---company--");
                         console.log(data[0]['FName']);
                         var company=data[0]['FName'];
                         gl.factory.setAttribute('disabled','disabled');
@@ -246,15 +234,65 @@ window.onload=function(){
                         gl.factory.removeAttribute('disabled');
                         gl.factory.focus();
 
-                    }
+                    }*//*
+
+                    console.log("--1--");
+                    console.log(data);
+
+                    console.log("---company--");
+                    console.log(data[0]['FName']);
+                    var company=data[0]['FName'];
+                    gl.factory.setAttribute('disabled','disabled');
+                    gl.factory.value=company;
+                    //console.log(data);
                 },
                 complete:function(){
-                    console.log("OK");
+                    //console.log("OK");
                 }
             });
         }
-    },false);
+    },false);*/
+    /*用户名 工厂部门*/
+    $.ajax({
+        url:'php/asnycData/ForBookbusAsnyc.php',
+        dataType:'json',
+        Type:'POST',
+        data:{
+            //"firstname":data
+        },
+        beforeSend:function(){
+            //
+        },
+        success:function(data){
 
+            console.log("--1--");
+            console.log(data);
+
+            console.log("---company--");
+            var company=data['Company'];
+            gl.factory.setAttribute('disabled','disabled');
+            gl.factory.value=company+data['Section'];
+            gl.manameinput.value=data['name'];
+
+            //console.log(data);
+        },
+        error:function(err){
+          alert(err.status);
+        },
+        complete:function(){
+            //console.log("OK");
+        }
+    });
+
+
+    if(true) {
+        gl.manamespan.style.top="-100%";
+        gl.manamespan.style.fontSize="1.2rem";
+        gl.manamespan.style.color="white";
+        gl.manamespan.style.left="0px";
+        gl.manamespan.style.fontWeight="bolder";
+        //console.log(123);
+    }
 
 
     /* 尝试function(xxx,successcallback,errorcallback){}*/
@@ -281,22 +319,22 @@ window.onload=function(){
             var valdate=$(this).text();
             //alert(valdate);
             $(this).parent().prev().find("b").text(valdate);
-            $("#addtimeval").text("7:30");
+
+            $("#addtimeval").text($("#addtime ul li").eq(0).text());
             $("#addtime").find("ul").css('visibility','visible');
+            $("#park ol").show();
+            $("#park ul").hide();
+
+            $("#park").find("b").text($("#park ol li").eq(0).text());
         }else if($(this).index()==$("#adddate ul li").length-1){
             var valdate=$(this).text();
-            $("#addtimeval").text("采用默认值");
+            $("#addtimeval").text("无加班时间项");
             $("#addtime").find("ul").css('visibility','hidden');
 
-            $("#park ol").empty();
-            $("#park span b").empty();
+            $("#park ol").hide();
+            $("#park ul").show();
 
-            (function(){
-                for(var i=0;i<5;i++){
-                    var li="<li>"+"上车"+"</li>";
-                    $("#park ol").append(li);
-                }
-            })()
+            $("#park").find("b").text($("#park ul li").eq(0).text());
 
         }
     });
@@ -313,6 +351,10 @@ window.onload=function(){
             var valpark=$(this).text();
             $(this).parent().prev().find("b").text(valpark);
         }
+    });
+    $("#park ul").delegate('li','click',function(){
+        var valpark=$(this).text();
+        $(this).parent().parent().find("b").text(valpark);
     });
     $("#parkList ul").delegate('li','click',function(){
         var valparkList=$(this).text();
@@ -343,14 +385,19 @@ window.onload=function(){
         	dataType:'',
         	Type:'POST',
         	data:{
-               "name_employee":gl.upname.value,
+                //"name_employee":gl.upname.value,
                 "FRDate":gl.upadddateval.innerHTML,//加班日期
-                "FRTime":gl.upaddtimeval.innerHTML,//加班时间
+                "FRTime":function(){
+                    if(gl.upaddtimeval.innerHTML=='无加班时间项'){
+                        return '无加班时间项';
+                    }else{
+                        return gl.upaddtimeval.innerHTML;
+                    }
+                },//加班时间
                 "FStop":gl.upparkval.innerHTML//下车站点
                 /*,
                 'addtime':'',
                 'adddate':''*/
-//        		'name':123
         	},
         	beforeSend:function(){
     			//这里确定一遍数据
