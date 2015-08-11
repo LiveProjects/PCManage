@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/header.css"/>
+    <link rel="stylesheet" href="../css/widget/footer.css"/>
+    <link rel="stylesheet" href="../tool/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../css/font-awesome.css"/>
+    <link rel="stylesheet" href="../css/college.css"/>
+    <title>Hisense</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div id="collegemain" class="col-md-6 col-md-offset-3">
+        <div class="input-group">
+            <input type="text" id="collegemain1" class="form-control" placeholder="提交人姓名" disabled aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group">
+            <input type="text" id="collegemain2" class="form-control" placeholder="所在公司" disabled aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group">
+            <input type="text" id="collegemain3" class="form-control" placeholder="人数" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group">
+            <input type="text" id="collegemain4" class="form-control" placeholder="预约日期"  aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group">
+            <input type="text" id="collegemain5" class="form-control" placeholder="预约时间" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group">
+            <input type="text" id="collegemain6" class="form-control" placeholder="站点" aria-describedby="basic-addon1">
+        </div>
+
+
+        <div class="input-group" >
+            <input type="text" id="collegemain7" class="form-control" placeholder="操作日期" aria-describedby="basic-addon1">
+        </div>
+
+        <div>
+            <button class="btn btn-success" id="collegesubmit"><i class="fa fa-spinner fa-spin"></i>提交</button>
+            <button class="btn btn-danger" type="reset">重置</button>
+        </div>
+    </div>
+    <div id="slideright" class="col-md-2">
+        <ul>
+            <li>a</li>
+            <li>ads</li>
+            <li>adwaw</li>
+            <li>双山</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+<script src="../tool/jquery/dist/jquery.js"></script>
+<script src="../tool/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../js/header.js"></script>
+<script src="../js/collegeBus.js"></script>
+<script type="text/javascript" src="../js/laydate.dev.js"></script>
+<script type="text/javascript">
+    laydate({
+        elem: '#collegemain4'
+    });
+</script>
+</html>

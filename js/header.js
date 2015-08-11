@@ -3,7 +3,7 @@
  */
 $(document).ready(function(){
     $("#header").load('widget/header.html', function (data, status, xhr) {
-        console.log(data);
+        //console.log(data);
         $("#loginBox").css('height',window.innerHeight-100+'px');
         $("#login").click(function(e){
             e.stopPropagation();
@@ -31,7 +31,7 @@ $(document).ready(function(){
         });
     });
     $("#footer").load('widget/footer.html', function (data, status, xhr) {
-        console.log(data);
+        //console.log(data);
     });
 
 /*    $("#profile").click(function(){
