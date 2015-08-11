@@ -3,6 +3,7 @@ header ( 'content-type:text/html;charset=utf-8' );
 require '../non_get/dbaccess.php';
 $db = new DB ();
 session_start ();
+
 if (isset ( $_SESSION ['emp_number'] )) {
 	
 	$emp_number = $_SESSION ['emp_number'];
@@ -55,18 +56,16 @@ if (isset ( $_SESSION ['emp_number'] )) {
 		$book ['Num'] = $FNum;
 		$book ['FRDate'] = $FRDate;
 		$book ['FRTime'] = $FRTime;
-
-
 	    $book ['CurDate'] = $CurDate;
 
 	    echo $book ['FNumber'].$book ['FCompanyID'].$book ['Num'].$book ['FRDate'].$book ['FRTime'].$book ['FStopID'].$book ['CurDate'];
 		
 		// 判断是否重复预约
 		/*$sql_repeat = "select FID from t_hs_collage_reserv where FNumber='{$book['FNumber']}' and FRDate='{$book ['FRDate']}' ";
-		$res_repeat = $db->getrow ( $sql_repeat ); */
+		$res_repeat = $db->getrow ( $sql_repeat ); *//**//**//*
 		
 		
-		/*if (empty ( $res_repeat )) { // 没有重复预约
+		if (empty ( $res_repeat )) { // 没有重复预约
 			// 向数据库插入数据
 			$res=$db->insert(t_hs_collage_reserv, $book);
 			if ($res) {
@@ -76,13 +75,13 @@ if (isset ( $_SESSION ['emp_number'] )) {
 			}
 		} else {
 			//提示更新
-			*//*$sql_update = "update  t_hs_overwork_reserv set FStopID='{$book['FStopID']}' , FRTime='{$book ['FRTime']}' , FDate='{$book ['FDate']}' where FID='{$res_repeat['FID']}'";
+			$sql_update = "update  t_hs_overwork_reserv set FStopID='{$book['FStopID']}' , FRTime='{$book ['FRTime']}' , FDate='{$book ['FDate']}' where FID='{$res_repeat['FID']}'";
 			$res_update = $db->execsql ( $sql_update );
 			if ($res_update) {
 				echo 1; // 预约成功
 			} else {
 				echo 0; // 预约失败，请联系技术支持
-			}*//*
+			}
 		}*/
 
 	}

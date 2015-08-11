@@ -24,6 +24,22 @@
   float: right;
   margin-right: 30px;
 }
+#collegemain > div label {
+  display: block;
+  width: 30%;
+  height: 30px;
+  line-height: 30px;
+  float: left;
+  /*background-color: #ffffff;*/
+  border-radius: 10px;
+}
+#collegemain > div label input {
+  display: block;
+  height: 30px;
+  width: 30px;
+  float: left;
+  margin: 0 10px;
+}
 #collegemain > div > span {
   position: relative;
 }

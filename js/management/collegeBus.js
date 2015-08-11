@@ -90,7 +90,9 @@ window.onload=function(){
     };*/
     gl.collegesubmit.onclick=function(){
 
-        //alert(gl.collegemain1.value);
+        var date=$("#year").text()+"-"+$("#month").text()+"-"+$("#day").text();
+        var time=$("#hour").text()+":"+$("#ins").text();
+
         $.ajax({
             url:'../php/asnycData/collegeBook.php',
             Type:'POST',
@@ -99,8 +101,8 @@ window.onload=function(){
                 FNumber:gl.collegemain1.value,
                 FCompanyID:gl.collegemain2.value,
                 FNum:gl.collegemain3.value,
-                FRDate:gl.collegemain4.value,
-                FRTime:gl.collegemain5.value,
+                FRDate:date,
+                FRTime:time,
                 FStop:gl.collegemain6.value,
                 FDate:gl.collegemain7.value
             },
@@ -156,5 +158,17 @@ window.onload=function(){
     /*gl.slideright.lastElementChild.childNodes.onclick= function () {
         alert(123);
     }*/
+
+    $("#collegemain span").click(function (e) {
+        e.stopPropagation();
+        e.cancelBubble=true;
+        $(this).find("ul").fadeIn();
+    });
+    $("#collegemain span ul").delegate('li','click',function (e) {
+        e.stopPropagation();
+        e.cancelBubble=true;
+        $(this).parent().fadeOut();
+        $(this).parent().parent().find("i").text($(this).text());
+    });
 
 };

@@ -6,12 +6,12 @@
     <link rel="stylesheet" href="../css/widget/footer.css"/>
     <link rel="stylesheet" href="../tool/bootstrap/dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="../css/font-awesome.css"/>
-    <link rel="stylesheet" href="../css/college.css"/>
+    <link rel="stylesheet" href="../css/manage/tempBook.css"/>
     <title>Hisense</title>
 </head>
 <body>
 <div class="container-fluid">
-    <div id="collegemain" class="col-md-7 col-md-offset-1">
+    <div id="collegemain" class="col-md-8 col-md-offset-1">
         <div class="input-group">
             <span class="move">姓名</span>
             <input type="text" id="collegemain1" class="form-control" placeholder="提交人姓名" disabled aria-describedby="basic-addon1">
@@ -24,6 +24,18 @@
             <span class="move">人数</span>
             <input type="text" id="collegemain3" class="form-control" placeholder="人数" aria-describedby="basic-addon1">
         </div>
+        <!--<div class="input-group">
+            &lt;!&ndash;<input type="text" id="collegemain4" class="form-control" placeholder="预约日期"  aria-describedby="basic-addon1">&ndash;&gt;
+            <span>班车日期</span>
+
+            <span id="year">2015</span><i>-</i><span id="month">8</span><i>-</i><span id="day">9</span>
+        </div>
+        <div class="input-group">
+            <span>班车时间</span>
+
+            <span id="hour">9</span><i>:</i><span id="ins">30</span>
+        </div>-->
+
         <div class="input-group">
             <!--<input type="text" id="collegemain4" class="form-control" placeholder="预约日期"  aria-describedby="basic-addon1">-->
             <span class="move">班车日期</span>
@@ -84,13 +96,21 @@
             </span>
         </div>
         <div class="input-group">
-            <span class="move">站点</span>
-            <input type="text" id="collegemain6" class="form-control" placeholder="站点" aria-describedby="basic-addon1">
+            <span class="move">发车站点</span>
+            <input type="text" id="collegemain6" class="form-control" placeholder="发车站点" aria-describedby="basic-addon1">
         </div>
 
 
-        <div class="input-group" style="display: none">
-            <input type="text" id="collegemain7" class="form-control" placeholder="操作日期" aria-describedby="basic-addon1">
+        <div class="input-group" >
+            <span class="move">终点站</span>
+            <input type="text" id="collegemain7" class="form-control" placeholder="终点站" aria-describedby="basic-addon1">
+        </div>
+
+
+        <div class="input-group" id="radioline" >
+            <label for="">单程<input value="单程" checked name="line" type="radio"/></label>
+            <label for="">往返<input value="往返" name="line" type="radio"/></label>
+
         </div>
 
         <div>
@@ -98,7 +118,7 @@
             <button class="btn btn-danger" type="reset">重置</button>
         </div>
     </div>
-    <div id="slideright" class="col-md-2 col-md-offset-1">
+    <div id="slideright" class="col-md-2">
         <ul>
             <li>a</li>
             <li>ads</li>
@@ -112,5 +132,5 @@
 <script src="../tool/jquery/dist/jquery.js"></script>
 <script src="../tool/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="../js/header.js"></script>
-<script src="../js/management/collegeBus.js"></script>
+<script src="../js/management/tempBook.js"></script>
 </html>
