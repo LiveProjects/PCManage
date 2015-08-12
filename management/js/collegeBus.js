@@ -94,7 +94,7 @@ window.onload=function(){
         var time=$("#hour").text()+":"+$("#ins").text();
 
         $.ajax({
-            url:'../php/asnycData/collegeBook.php',
+            url:'../management/php/get/collegeBook.php',
             Type:'POST',
             dataType:'json',
             data:{
@@ -118,7 +118,7 @@ window.onload=function(){
     };
     /*用户名 工厂部门*/
     $.ajax({
-        url:'../php/asnycData/ForBookbusAsnyc.php',
+        url:'../common/php/non_get/employee.php',
         dataType:'json',
         Type:'POST',
         data:{
