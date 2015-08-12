@@ -18,7 +18,7 @@ window.onload=function(){
 
     /*用户名 工厂部门*/
     $.ajax({
-        url:'../php/asnycData/ForBookbusAsnyc.php',
+        url:'../common/php/non_get/employee.php',
         dataType:'json',
         Type:'POST',
         data:{
@@ -49,22 +49,29 @@ window.onload=function(){
 
         //alert(gl.collegemain1.value);
         $.ajax({
-            url:'../php/asnycData/collegeBook.php',
+            url:'../management/php/get/temp_book.php',
             Type:'POST',
             dataType:'json',
             data:{
-                FNumber:gl.collegemain1.value,
-                FCompanyID:gl.collegemain2.value,
+                /*FNumber:gl.collegemain1.value,
+                FCompanyID:gl.collegemain2.value,*/
                 FNum:gl.collegemain3.value,
                 FRDate:date,
                 FRTime:time,
-                FStart:gl.collegemain6.value,
-                FStop:gl.collegemain7.value,
+                FStartStop:gl.collegemain6.value,
+                FEndStop:gl.collegemain7.value,
                 FType:FType
             },
             success:function(data){
 
                 console.log(data);
+                if(data==2){
+                	alert("请检查空项");
+                }else if(data==1){
+                	alert("预约成功");
+                }else{
+                	alert("预约失败，请联系技术支持");
+                }
             },
             error: function (err) {
                 console.log(err);
